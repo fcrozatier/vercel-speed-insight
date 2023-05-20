@@ -5,13 +5,15 @@
 
   export let data;
 
-  if (browser && data.analyticsId) {
-    console.log("analyticsId:", data.analyticsId);
+  const analyticsId = process.env.VERCEL_ANALYTICS_ID;
+
+  if (browser && analyticsId) {
+    console.log("analyticsId:", analyticsId);
 
     webVitals({
       path: $page.url.pathname,
       params: $page.params,
-      analyticsId: data.analyticsId,
+      analyticsId: analyticsId,
     });
   }
 </script>
