@@ -3,17 +3,15 @@
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
 
-  let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
+  export let data;
 
-  console.log("analyticsId:", analyticsId);
-
-  $: if (browser && analyticsId) {
-    console.log("analyticsId:", analyticsId);
+  if (browser && data.analyticsId) {
+    console.log("analyticsId:", data.analyticsId);
 
     webVitals({
       path: $page.url.pathname,
       params: $page.params,
-      analyticsId,
+      analyticsId: data.analyticsId,
     });
   }
 </script>
